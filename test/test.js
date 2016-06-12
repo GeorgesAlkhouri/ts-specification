@@ -1,5 +1,5 @@
 import {assert} from 'chai';
-import Specification, {CompositeSpecification} from '../dist/specification.js';
+import Specification, {CompositeSpecification} from '../dist/Specification.js';
 
 class TrueSpecification extends CompositeSpecification {
 

@@ -5,8 +5,9 @@
         "noImplicitAny": true,
         "target": "es5",
         "module": "commonjs",
+        "moduleResolution": "node",
         "removeComments": true,
-        "outDir": "./dist"
+        "outDir": "dist/"
     },
     "exclude": [
       "node_modules"

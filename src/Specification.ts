@@ -18,8 +18,8 @@ export abstract class CompositeSpecification<T> implements ISpecification<T> {
 
 export class AndSpecification<T> extends CompositeSpecification<T> {
 
-    left: ISpecification<T>
-    right: ISpecification<T>
+    private left: ISpecification<T>
+    private right: ISpecification<T>
 
     constructor(left: ISpecification<T>, right: ISpecification<T>) {
         super()
@@ -34,8 +34,8 @@ export class AndSpecification<T> extends CompositeSpecification<T> {
 
 export class OrSpecification<T> extends CompositeSpecification<T> {
 
-    left: ISpecification<T>
-    right: ISpecification<T>
+    private left: ISpecification<T>
+    private right: ISpecification<T>
 
     constructor(left: ISpecification<T>, right: ISpecification<T>) {
         super()
@@ -50,7 +50,7 @@ export class OrSpecification<T> extends CompositeSpecification<T> {
 
 export class NotSpecification<T> extends CompositeSpecification<T> {
 
-  other: ISpecification<T>
+  private other: ISpecification<T>
 
   constructor(other: ISpecification<T>) {
       super()
@@ -64,8 +64,8 @@ export class NotSpecification<T> extends CompositeSpecification<T> {
 
 export class RangeSpecification<T> extends CompositeSpecification<T> {
 
-  a: T
-  b: T
+  private a: T
+  private b: T
 
   constructor(a: T, b: T) {
       super()

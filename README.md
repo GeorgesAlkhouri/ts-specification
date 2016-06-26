@@ -3,7 +3,7 @@ Specification pattern for JavaScript implemented with TypeScript
 
 > In computer programming, the specification pattern is a particular software design pattern, whereby business rules can be recombined by chaining the business rules together using boolean logic.
 >
-> -- <cite>Wikipedia.org (https://en.wikipedia.org/wiki/Specification_pattern\)</cite>
+> -- <cite>Wikipedia.org ( https://en.wikipedia.org/wiki/Specification_pattern )</cite>
 
 Usage With Node
 ---------------

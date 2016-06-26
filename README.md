@@ -26,8 +26,8 @@ To create custom specifications just extend from the `CompositeSpecification` cl
 ```
 class RangeSpecification<T> extends CompositeSpecification<T> {
 
-  a: T
-  b: T
+  private a: T
+  private b: T
 
   constructor(a: T, b: T) {
       super()

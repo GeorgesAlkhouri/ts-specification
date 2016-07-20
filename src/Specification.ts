@@ -7,8 +7,16 @@ export abstract class CompositeSpecification<T> implements ISpecification<T> {
       return new AndSpecification<T>(this, other)
     }
 
+    andNot(other: ISpecification<T>): ISpecification<T> {
+      return new AndNotSpecification<T>(this, other)
+    }
+
     or(other: ISpecification<T>): ISpecification<T> {
       return new OrSpecification<T>(this, other)
+    }
+
+    orNot(other: ISpecification<T>): ISpecification<T> {
+      return new OrNotSpecification<T>(this, other)
     }
 
     not(): ISpecification<T> {
@@ -32,6 +40,13 @@ export class AndSpecification<T> extends CompositeSpecification<T> {
     }
 }
 
+export class AndNotSpecification<T> extends AndSpecification<T> {
+
+  isSatisfiedBy(candidate: T): boolean {
+      return super.isSatisfiedBy(candidate) !== true
+  }
+}
+
 export class OrSpecification<T> extends CompositeSpecification<T> {
 
     private left: ISpecification<T>
@@ -45,6 +60,12 @@ export class OrSpecification<T> extends CompositeSpecification<T> {
 
     isSatisfiedBy(candidate: T): boolean {
         return this.left.isSatisfiedBy(candidate) || this.right.isSatisfiedBy(candidate)
+    }
+}
+
+export class OrNotSpecification<T> extends OrSpecification<T> {
+    isSatisfiedBy(candidate: T): boolean {
+        return super.isSatisfiedBy(candidate) !== true
     }
 }
 

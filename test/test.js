@@ -72,7 +72,7 @@ describe('Specification Test', () => {
       .isSatisfiedBy(null));
   });
   it('true not spec must be false', () => {
-    assert.isFalse(new TrueSpecification().not().isSatisfiedBy(null));
+     assert.isFalse(new TrueSpecification().not().isSatisfiedBy(null));
   });
   it('false not spec must be true', () => {
     assert.isTrue(new FalseSpecification().not().isSatisfiedBy(null));
@@ -92,4 +92,51 @@ describe('Specification Test', () => {
       assert.isFalse(combined.isSatisfiedBy(6));
   });
 
+  it('true andNot true spec should be false', () => {
+      assert.isFalse(
+          new TrueSpecification().andNot(new TrueSpecification()).isSatisfiedBy(null)
+      );
+  });
+
+  it('true andNot false spec should be true', () => {
+     assert.isTrue(
+        new TrueSpecification().andNot(new FalseSpecification()).isSatisfiedBy(null)
+     );
+  });
+
+  it('false andNot true spec should be true', () => {
+      assert.isTrue(
+          new FalseSpecification().andNot(new TrueSpecification()).isSatisfiedBy(null)
+      );
+  });
+
+  it('false andNot false spec should be true', () => {
+      assert.isTrue(
+          new FalseSpecification().andNot(new FalseSpecification()).isSatisfiedBy(null)
+      );
+  });
+
+  it('true orNot true spec should be false', () => {
+      assert.isFalse(
+          new TrueSpecification().orNot(new TrueSpecification()).isSatisfiedBy(null)
+      );
+  });
+
+  it('true orNot false spec should be false', () => {
+     assert.isFalse(
+        new TrueSpecification().orNot(new FalseSpecification()).isSatisfiedBy(null)
+     );
+  });
+
+  it('false orNot true spec should be false', () => {
+      assert.isFalse(
+          new FalseSpecification().orNot(new TrueSpecification()).isSatisfiedBy(null)
+      );
+  });
+
+  it('false orNot false spec should be true', () => {
+      assert.isTrue(
+          new FalseSpecification().orNot(new FalseSpecification()).isSatisfiedBy(null)
+      );
+  });
 });

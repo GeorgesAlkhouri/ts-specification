@@ -16,6 +16,10 @@ and import the package afterwards:
 
 `import Specification from 'ts-specification'`
 
+The test cases are written in JavaScript and can be tested with:
+
+`npm test`
+
 Create Custom Specs
 -------------------
 

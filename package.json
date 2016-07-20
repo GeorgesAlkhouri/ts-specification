@@ -1,6 +1,6 @@
 {
   "name": "ts-specification",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Specification pattern implementation for NodeJS in TypeScript",
   "main": "dist/Specification.js",
   "typings": "dist/Specification.d.ts",

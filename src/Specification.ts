@@ -38,12 +38,20 @@ export class AndSpecification<T> extends CompositeSpecification<T> {
     isSatisfiedBy(candidate: T): boolean {
         return this.left.isSatisfiedBy(candidate) && this.right.isSatisfiedBy(candidate)
     }
+
+    toString(): string {
+        return '(' + this.left.toString() + ' and ' + this.right.toString() + ')'
+    }
 }
 
 export class AndNotSpecification<T> extends AndSpecification<T> {
 
   isSatisfiedBy(candidate: T): boolean {
       return super.isSatisfiedBy(candidate) !== true
+  }
+
+  toString(): string {
+      return 'not ' + super.toString()
   }
 }
 
@@ -61,11 +69,19 @@ export class OrSpecification<T> extends CompositeSpecification<T> {
     isSatisfiedBy(candidate: T): boolean {
         return this.left.isSatisfiedBy(candidate) || this.right.isSatisfiedBy(candidate)
     }
+
+    toString(): string {
+        return '(' + this.left.toString() + ' or ' + this.right.toString() + ')'
+    }
 }
 
 export class OrNotSpecification<T> extends OrSpecification<T> {
     isSatisfiedBy(candidate: T): boolean {
         return super.isSatisfiedBy(candidate) !== true
+    }
+
+    toString(): string {
+        return 'not ' + super.toString()
     }
 }
 
@@ -80,6 +96,10 @@ export class NotSpecification<T> extends CompositeSpecification<T> {
 
   isSatisfiedBy(candidate: T): boolean {
       return !this.other.isSatisfiedBy(candidate)
+  }
+
+  toString(): string {
+      return '(not ' + this.other.toString() + ')'
   }
 }
 
@@ -96,5 +116,9 @@ export class RangeSpecification<T> extends CompositeSpecification<T> {
 
   isSatisfiedBy(candidate: T): boolean {
       return candidate >= this.a && candidate <= this.b
+  }
+
+  toString(): string {
+     return 'range (' + this.a + ', ' + this.b + ')'
   }
 }

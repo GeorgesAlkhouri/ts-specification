@@ -6,12 +6,20 @@ class TrueSpecification extends CompositeSpecification {
     isSatisfiedBy(candidate) {
         return true;
     }
+
+    toString() {
+        return 'true';
+    }
 }
 
 class FalseSpecification extends CompositeSpecification {
 
     isSatisfiedBy(candidate) {
         return false;
+    }
+
+    toString() {
+        return 'false';
     }
 }
 
@@ -139,4 +147,56 @@ describe('Specification Test', () => {
           new FalseSpecification().orNot(new FalseSpecification()).isSatisfiedBy(null)
       );
   });
+});
+
+describe('Specification toString tests', () => {
+  it('should return false', () => {
+    assert.strictEqual(new FalseSpecification().toString(), 'false');
+  });
+
+  it('should return true', () => {
+    assert.strictEqual(new TrueSpecification().toString(), 'true');
+  });
+
+  it('should return "(true and false)"', () => {
+      assert.strictEqual(new TrueSpecification().and(new FalseSpecification()).toString(), '(true and false)');
+  });
+
+  it('should return "(false and true)"', () => {
+      assert.strictEqual(new FalseSpecification().and(new TrueSpecification()).toString(), '(false and true)');
+  });
+
+  it('should return "(true or false)"', () => {
+      assert.strictEqual(new TrueSpecification().or(new FalseSpecification()).toString(), '(true or false)');
+  });
+
+  it('should return "(false or true)"', () => {
+      assert.strictEqual(new FalseSpecification().or(new TrueSpecification()).toString(), '(false or true)');
+  });
+
+  it('should return "not (false and true)"', () => {
+      assert.strictEqual(new FalseSpecification().andNot(new TrueSpecification()).toString(), 'not (false and true)');
+  });
+
+  it('should return "not (false or true)"', () => {
+      assert.strictEqual(new FalseSpecification().orNot(new TrueSpecification()).toString(), 'not (false or true)');
+  });
+
+  it('should return "(not true)"', () => {
+      assert.strictEqual(new TrueSpecification().not().toString(), '(not true)');
+  });
+
+  it('should return "range (1, 2)"', () => {
+    assert.strictEqual(new Specification.RangeSpecification(1,2).toString(), 'range (1, 2)');
+  });
+
+  it('should return "not ((true and range (1, 2)) or (false and (not false)))"', () => {
+      assert.strictEqual(
+        new TrueSpecification().
+          and(new Specification.RangeSpecification(1, 2)).
+          orNot(new FalseSpecification().
+          and(new FalseSpecification().not())).
+        toString(), 'not ((true and range (1, 2)) or (false and (not false)))');
+  });
+
 });

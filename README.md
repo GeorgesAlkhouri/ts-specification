@@ -1,6 +1,8 @@
 Specification pattern for JavaScript implemented with TypeScript
 ================================================================
 
+[![Build Status](https://travis-ci.org/GeorgesAlkhouri/ts-specification.svg?branch=master)](https://travis-ci.org/GeorgesAlkhouri/ts-specification)
+
 > In computer programming, the specification pattern is a particular software design pattern, whereby business rules can be recombined by chaining the business rules together using boolean logic.
 >
 > -- <cite>Wikipedia.org ( https://en.wikipedia.org/wiki/Specification_pattern )</cite>
